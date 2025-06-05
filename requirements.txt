@@ -1,2 +1,1 @@
-autogpt==0.4.3
-
+autogpt==0.5.1
