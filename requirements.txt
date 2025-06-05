@@ -1,1 +1,2 @@
-allennlp==2.10.1
+autogpt==0.4.3
+
