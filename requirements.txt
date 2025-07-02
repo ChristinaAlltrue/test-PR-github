@@ -1,2 +1,40 @@
+python
+import re
+
+def update_dependency_file(dependency_file_contents, library_updates):
+    library_updates = eval(library_updates.strip("").replace('LibraryUpdates(', '').replace(')', ''))
+    if not isinstance(library_updates, list):
+        library_updates = [library_updates]
+
+    for update in library_updates:
+        library_name = update['library_name']
+        new_version = update['new_version']
+
+        lines = dependency_file_contents.strip("").split('\n')
+        updated_lines = []
+        for line in lines:
+            if line.strip() and line.split('==')[0].split('~=')[0].strip() == library_name:
+                if '==' in line:
+                    updated_lines.append(f'{library_name}=={new_version}')
+                elif '~=' in line:
+                    updated_lines.append(f'{library_name}~={new_version}')
+                else:
+                    updated_lines.append(line)
+            else:
+                updated_lines.append(line)
+
+        dependency_file_contents = '\n'.join(updated_lines) + '\n'
+
+    return dependency_file_contents
+
+library_updates = 
+[LibraryUpdates(library_name='gradio', current_version='4.11.0', new_version='5.0.0')]
+
+
+dependency_file_contents = 
 autogpt==2.4.3
 gradio~=4.11.0
+
+
+
+print(update_dependency_file(dependency_file_contents, library_updates))
