@@ -1,2 +1,26 @@
+python
+import re
+
+def update_dependency_file(dependency_file_contents, library_updates):
+    library_updates = eval(library_updates.strip("").strip())
+    for update in library_updates:
+        library_name = update['library_name']
+        current_version = update['current_version']
+        new_version = update['new_version']
+
+        pattern = re.compile(rf'^{library_name}([~!=<>]+)(.*)$', re.MULTILINE)
+        dependency_file_contents = pattern.sub(rf'{library_name}\1{new_version}', dependency_file_contents)
+
+    return dependency_file_contents
+
+library_updates = 
+[LibraryUpdates(library_name='gradio', current_version='4.11.0', new_version='5.0.0')]
+
+
+dependency_file_contents = 
 autogpt==2.4.3
 gradio~=4.11.0
+
+
+
+print(update_dependency_file(dependency_file_contents, library_updates))
