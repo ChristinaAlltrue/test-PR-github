@@ -1,2 +1,1 @@
-autogpt==2.4.3
-gradio~=4.11.0
+langchain=0.1.3
