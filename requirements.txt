@@ -1,3 +1,14 @@
 aim=3.24.0
 langchain=0.3.79
-langchain=0.0.261
+langchain=0.0.261 -> langchain=0.3.1 (this line should be updated)
+
+ Corrected output:
+aim=3.24.0
+langchain=0.3.79
+langchain=0.3.1
+
+
+Output:
+aim=3.24.0
+langchain=0.3.79
+langchain=0.3.1
